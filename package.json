@@ -1,0 +1,16 @@
+{
+  "name": "weapp-leyouv",
+  "version": "v1.0.0",
+  "description": "leyouv",
+  "main": "app.js",
+  "scripts": {
+    "lint": "eslint"
+  },
+  "keywords": ["leyouv", "weapp"],
+  "author": "leyouv@hotmail.com", 
+  "devDependencies": {
+    "eslint": "^3.9.1",
+    "eslint-config-airbnb-base": "^9.0.0",
+    "eslint-plugin-import": "^2.0.1"
+  }
+}
