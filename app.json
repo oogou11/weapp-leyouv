@@ -8,7 +8,8 @@
     "pages/waypoint/waypoint",
     "pages/user/user",
     "pages/trip/trip",
-    "pages/share/share"
+    "pages/share/share",
+    "pages/tourism/index"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -23,27 +24,17 @@
     "backgroundColor": "#fff",
     "list": [{
       "pagePath": "pages/index/index",
-      "iconPath": "images/index_normal.png",
-      "selectedIconPath": "images/index_pressed.png",
+      "iconPath": "images/explore_normal.png",
+      "selectedIconPath": "images/explore_pressed.png",
       "text": "推荐"
-    }, {
-      "pagePath": "pages/explore/explore",
-      "iconPath": "images/explore_normal.png",
-      "selectedIconPath": "images/explore_pressed.png",
-      "text": "发现（delete）"
     },
-    {
-      "pagePath": "pages/share/share",
-      "iconPath": "images/share_normal.png",
-      "selectedIconPath": "images/share_pressed.png",
-      "text": "共享美好（doing）"
-    },
-    {
-      "pagePath": "pages/explore/explore",
-      "iconPath": "images/explore_normal.png",
-      "selectedIconPath": "images/explore_pressed.png",
-      "text": "我的"
-    }]
+     {
+      "pagePath": "pages/tourism/index",
+      "iconPath": "images/tourism_normal.png",
+      "selectedIconPath": "images/tourism_pressed.png",
+      "text": "行程"
+    }
+    ]
   },
   "debug": true
 }
