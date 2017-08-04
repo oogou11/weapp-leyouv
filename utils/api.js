@@ -1,4 +1,4 @@
-const apiURL = 'https://api.breadtrip.com';
+const apiURL = 'https://api.leyouv.com';
 
 const wxRequest = (params, url) => {
   wx.request({
@@ -28,8 +28,12 @@ const wxRequest = (params, url) => {
 };
 
 const getHotTripList = (params) => {
-  wxRequest(params, `${apiURL}/v2/index/`);
+  wxRequest(params, `${apiURL}/v1/trip/index`);
 };
+const getTripInfoByID = (params) => {
+  wxRequest(params, `${apiURL}/v1/trips/${params.query.tripId}/waypoints`);
+};
+
 const getExplorePlaceList = (params) => {
   wxRequest(params, `${apiURL}/destination/v3/`);
 };
@@ -39,9 +43,7 @@ const getPlaceInfoByID = (params) => {
 const getPlacePOIByID = (params) => {
   wxRequest(params, `${apiURL}/destination/place/${params.query.type}/${params.query.id}/pois/${params.query.poiType}/`);
 };
-const getTripInfoByID = (params) => {
-  wxRequest(params, `${apiURL}/trips/${params.query.tripId}/waypoints/`);
-};
+
 const getPlaceTripByID = (params) => {
   wxRequest(params, `${apiURL}/destination/place/${params.query.type}/${params.query.id}/trips/`);
 };

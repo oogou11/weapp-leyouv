@@ -1,6 +1,6 @@
 <template name="m-trip">
   <view class="m-trip" bindtap="viewTrip" data-id="{{ trip.id }}" data-name="{{ trip.name }}" wx:if="{{ mode === 1 || mode === 2 }}">              
-    <image class="cover" src="{{ trip.cover_image_w640 }}" mode="aspectFill"></image>
+    <image class="cover" src="{{ trip.cover_image_default }}" mode="aspectFill"></image>
     <view class="info">
       <text class="h2">{{ trip.name }}</text>
       <view class="detail">
@@ -8,7 +8,7 @@
         <view class="place" wx:if="{{ mode === 1 }}">{{ trip.popular_place_str }}</view>
       </view>
       <view class="user" wx:if="{{ mode === 1 }}">
-        <image class="avatar" src="{{ trip.user.avatar_l }}"></image>
+        <image class="avatar" src="{{ trip.user.avatar_1 }}"></image>
         <view class="name">by {{ trip.user.name }}</view>
       </view>
       <view class="bottom" wx:if="{{ mode === 2 }}">{{ trip.view_count }}次浏览 / {{ trip.liked_count }}喜欢 / {{ trip.total_comments_count }}评论</view>
@@ -16,7 +16,7 @@
   </view>
   <view class="m-trip-s" bindtap="viewTrip" data-id="{{ trip.id }}" data-name="{{ trip.name }}"  wx:if="{{ mode === 3 }}">
     <view class="mask"></view>
-    <image class="cover" src="{{ trip.cover_image_w640 }}" mode="aspectFill"></image>
+    <image class="cover" src="{{ trip.cover_image_default }}" mode="aspectFill"></image>
     <view class="info">
       <view class="title">{{ trip.name }}</view>
       <view class="detail"><view><text>{{ trip.date_added }}</text></view><view><text>{{ trip.day_count }}天</text></view></view>

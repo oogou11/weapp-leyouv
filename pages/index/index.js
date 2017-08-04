@@ -33,12 +33,8 @@ Page({
     api.getHotTripList({
       data,
       success: (res) => {
-        let newList = res.data.data.elements;
-        newList.map((trip) => {
-          const item = trip;
-          item.data[0].date_added = formatTime(new Date(item.data[0].date_added * 1000), 1);
-          return item;
-        });
+        let newList = res.data.result;
+        console.log(newList) 
         if (needRefresh) {
           wx.stopPullDownRefresh();
         } else {
@@ -47,11 +43,12 @@ Page({
         self.setData({
           trips: newList,
         });
-        const nextStart = res.data.data.next_start;
+        //const nextStart = res.data.next_start;
+        const nextStart =2
         self.setData({
           start: nextStart,
           loading: false,
-        });
+        }); 
       },
     });
   },

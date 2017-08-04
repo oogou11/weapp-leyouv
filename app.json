@@ -30,8 +30,8 @@
     },
      {
       "pagePath": "pages/tourism/index",
-      "iconPath": "images/tourism_normal.png",
-      "selectedIconPath": "images/tourism_pressed.png",
+      "iconPath": "images/xingcheng_normal.png",
+      "selectedIconPath": "images/xingcheng_pressed.png",
       "text": "行程"
     }
     ]

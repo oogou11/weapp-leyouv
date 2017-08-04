@@ -4,6 +4,7 @@ const app = getApp();
 Page({
   data: {
     trip: {},
+    days: [],
     options: null,
     windowWidth: 0,
   },
@@ -30,9 +31,10 @@ Page({
         tripId: id,
       },
       success: (res) => {
-        const trip = res.data;
+        const result = res.data.result;
         self.setData({
-          trip,
+          trip: result.trip,
+          days: result.days
         });
         wx.hideToast();
       },
