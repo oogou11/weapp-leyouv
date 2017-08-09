@@ -16,7 +16,7 @@ Page({
   },
   onLoad(options) {
     const self = this;
-    const id = options.id;
+    const id = options.id;    
     self.setData({
       options,
       windowWidth: app.systemInfo.windowWidth,
@@ -35,16 +35,17 @@ Page({
         self.setData({
           trip: result.trip,
           days: result.days
-        });
+        }); 
         wx.hideToast();
       },
-    });
+    }
+    );
   },
   viewWaypoint(e) {
     const self = this;
     const ds = e.currentTarget.dataset;
     wx.navigateTo({
-      url: `../waypoint/waypoint?waypointId=${ds.waypoint}&tripId=${self.data.trip.id}`,
+      url: `../waypoint/waypoint?waypointId=${ds.waypoint}`,
     });
   },
   gotoUser(e) {

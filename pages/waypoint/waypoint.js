@@ -22,66 +22,34 @@ Page({
     });
   },
   onLoad(options) {
-    const self = this;
-    const tripId = options.tripId;
+    const self = this; 
     const waypointId = options.waypointId;
     self.setData({
       windowWidth: app.systemInfo.windowWidth,
     });
-    this.getWaypointDetail(tripId, waypointId);
+    this.getWaypointDetail(waypointId);
   },
-  getWaypointDetail(tripId, waypointId) {
+  getWaypointDetail(waypointId) {
     const self = this;
     api.getWaypointInfoByID({
-      query: {
-        tripId,
+      query: { 
         waypointId,
       },
       success: (res) => {
-        const waypoint = res.data;
+        const waypoint = res.data.result; 
         self.setData({
           title: waypoint.trip_name,
           waypoint,
-        });
-        if (waypoint.comments > 0) {
-          self.getWaypointReplies(tripId, waypointId);
-        }
-      },
+          replies:{
+            recommender_count: waypoint.recommender_count,
+            comment_count: waypoint.comment_count,
+            comments: waypoint.comments,
+            recommenders: waypoint.recommenders
+          }
+        }); 
+      },  
     });
-  },
-  getWaypointReplies(tripId, waypointId) {
-    const self = this;
-    api.getWaypointReplyByID({
-      query: {
-        tripId,
-        waypointId,
-      },
-      success: (res) => {
-        const replies = res.data;
-        replies.comments.map((reply) => {
-          const item = reply;
-          item.date_added = formatTime(new Date(item.date_added * 1000), 2);
-          return item;
-        });
-        self.setData({
-          replies,
-        });
-      },
-    });
-    api.waypoint.replies(tripId, waypointId, (state, res) => {
-      if (state === 'success') {
-        const replies = res.data;
-        replies.comments.map((reply) => {
-          const item = reply;
-          item.date_added = formatTime(new Date(item.date_added * 1000), 2);
-          return item;
-        });
-        self.setData({
-          replies,
-        });
-      }
-    });
-  },
+  }, 
   gotoUser(e) {
     const userId = e.target.dataset.id;
     wx.navigateTo({

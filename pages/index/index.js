@@ -12,7 +12,7 @@ Page({
     windowWidth: App.systemInfo.windowWidth,
     windowHeight: App.systemInfo.windowHeight,
   },
-  onLoad() {
+  onLoad() {   
     this.loadMore();
   },
   onPullDownRefresh() {
@@ -33,22 +33,20 @@ Page({
     api.getHotTripList({
       data,
       success: (res) => {
-        let newList = res.data.result;
-        console.log(newList) 
+        let newList = res.data.result.data;
         if (needRefresh) {
           wx.stopPullDownRefresh();
         } else {
           newList = self.data.trips.concat(newList);
         }
         self.setData({
-          trips: newList,
+          trips: newList
         });
-        //const nextStart = res.data.next_start;
-        const nextStart =2
+        const nextStart = res.data.result.next_start;
         self.setData({
           start: nextStart,
           loading: false,
-        }); 
+        });
       },
     });
   },

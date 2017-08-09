@@ -14,21 +14,17 @@ Page({
   onLoad(options) {
     const self = this;
     const userId = options.id || self.data.userId;
+    console.log(userId)
     api.getUserInfoByID({
       query: {
         userId,
       },
-      success: (res) => {
-        const trips = res.data.trips;
-        trips.map((trip) => {
-          const item = trip;
-          item.date_added = formatTime(new Date(item.date_added * 1000), 1);
-          return item;
-        });
+      success: (res) => { 
+        const result = res.data.result; 
         self.setData({
-          trips,
-          userId: res.data.userId,
-          user_info: res.data.user_info,
+          trips: result.trips,
+          userId: userId,
+          user_info: result.user,
         });
         wx.setNavigationBarTitle({
           title: res.data.user_info.name,

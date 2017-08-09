@@ -1,7 +1,7 @@
 <import src="../../components/trip/trip.wxml"/>
 
 <view class="header">
-  <image src="{{ user_info.cover }}" style="width: {{ windowWidth }}px; height: {{ windowWidth - 150 }}px;"></image>
+  <image src="{{ user_info.avatar_m}}" style="width: {{ windowWidth }}px; height: {{ windowWidth - 150 }}px;"></image>
   <view class="mask"></view>
   <view class="user">
     <view class="info">

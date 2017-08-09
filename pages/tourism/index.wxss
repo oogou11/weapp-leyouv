@@ -1,0 +1,16 @@
+page{
+  background-color: #f6f6f6;
+}
+.list{
+}
+
+.m-tourism{
+  overflow: hidden;
+  position: relative;
+  border-radius: 8rpx; 
+}
+.m-tourism .cover{
+  width: 100%;
+  height: 330px;
+  vertical-align: bottom;
+}

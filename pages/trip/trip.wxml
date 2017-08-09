@@ -15,7 +15,7 @@
           <block wx:for="{{ day.waypoints }}" wx:for-item="wp" wx:key="wp.id">
             <block wx:if="{{ wp.photo || wp.text }}">
               <view class="waypoint" bindtap="viewWaypoint" data-waypoint="{{ wp.id }}">
-                <block wx:if="{{ wp.photo }}">
+                <block>
                   <view class="photo-ctn">
                     <image style="width: 100%; height: {{ wp.photo_info.h * (windowWidth - 30) / wp.photo_info.w }}px; background-color: #eeeeee;" class="cover" src="{{ wp.photo_webtrip }}"></image>
                   </view>

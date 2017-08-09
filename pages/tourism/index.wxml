@@ -1,1 +1,3 @@
-<view>正在建设者......</view>
+<view class="m-tourism">
+   <image class="cover" src="http://test-leyouv.oss-cn-beijing.aliyuncs.com/test/timg.gif" mode="aspectFill"></image>
+</view> 

@@ -27,11 +27,11 @@ const wxRequest = (params, url) => {
   });
 };
 
-const getHotTripList = (params) => {
-  wxRequest(params, `${apiURL}/v1/trip/index`);
+const getHotTripList = (params) => { 
+  wxRequest(params, `${apiURL}/v1/trips/index`);
 };
 const getTripInfoByID = (params) => {
-  wxRequest(params, `${apiURL}/v1/trips/${params.query.tripId}/waypoints`);
+  wxRequest(params, `${apiURL}/v1/trip/${params.query.tripId}/waypoints`);
 };
 
 const getExplorePlaceList = (params) => {
@@ -48,14 +48,11 @@ const getPlaceTripByID = (params) => {
   wxRequest(params, `${apiURL}/destination/place/${params.query.type}/${params.query.id}/trips/`);
 };
 const getUserInfoByID = (params) => {
-  wxRequest(params, `${apiURL}/users/${params.query.userId}/v2`);
+  wxRequest(params, `${apiURL}/v1/users/${params.query.userId}`);
 };
 const getWaypointInfoByID = (params) => {
-  wxRequest(params, `${apiURL}/trips/${params.query.tripId}/waypoints/${params.query.waypointId}/`);
-};
-const getWaypointReplyByID = (params) => {
-  wxRequest(params, `${apiURL}/trips/${params.query.tripId}/waypoints/${params.query.waypointId}/replies/`);
-};
+  wxRequest(params, `${apiURL}/v1/waypoint/detail/${params.query.waypointId}`);
+}; 
 
 module.exports = {
   getHotTripList,
@@ -65,6 +62,5 @@ module.exports = {
   getTripInfoByID,
   getPlaceTripByID,
   getUserInfoByID,
-  getWaypointInfoByID,
-  getWaypointReplyByID,
+  getWaypointInfoByID, 
 };
