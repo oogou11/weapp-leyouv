@@ -54,6 +54,10 @@ const getWaypointInfoByID = (params) => {
   wxRequest(params, `${apiURL}/v1/waypoint/detail/${params.query.waypointId}`);
 }; 
 
+const addNewUser = (params)=>{ 
+  wxRequest(params.data,`${apiURL}/v1/users/pauli?m=info`);
+}
+
 module.exports = {
   getHotTripList,
   getExplorePlaceList,
@@ -63,4 +67,5 @@ module.exports = {
   getPlaceTripByID,
   getUserInfoByID,
   getWaypointInfoByID, 
+  addNewUser,
 };

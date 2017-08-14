@@ -9,7 +9,7 @@
     </view>
   </block>
   <view class="recommender">
-    <view class="title">{{ replies.recommender_count }} 人喜欢</view>
+    <view bindtap="add_replies" class="title">{{ replies.recommender_count }} 人喜欢</view>
     <view class="recommender_list">
       <image wx:for="{{ replies.recommenders }}" wx:for-item="recommender" wx:key="recommender.user.id" src="{{ recommender.user.avatar_l }}" data-id="{{ recommender.user.id }}" class="avatar" bindtap="gotoUser"></image>
     </view>

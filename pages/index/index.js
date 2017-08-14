@@ -12,7 +12,24 @@ Page({
     windowWidth: App.systemInfo.windowWidth,
     windowHeight: App.systemInfo.windowHeight,
   },
-  onLoad() {   
+  onLoad() {
+    wx.getUserInfo({
+      success: function (res) {
+        console.log(res)
+        wx.login({
+          success: function (lg_res) {
+            let param = { method: "POST", "data": { "code": lg_res.code, "encryptedData": res.encryptedData, "iv": res.iv } }
+            if (lg_res.code) {
+              api.addNewUser({
+                data: param,
+                success: () => {
+                }
+              })
+            }
+          }
+        })
+      }
+    })
     this.loadMore();
   },
   onPullDownRefresh() {

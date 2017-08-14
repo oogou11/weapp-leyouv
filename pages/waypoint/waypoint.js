@@ -62,5 +62,12 @@ Page({
       current: url,
       urls: [url],
     });
-  },
+  }, 
+  add_replies(e){
+    wx.login({
+      success:function(res){
+        console.log(res.code)
+      }
+    })    
+  }
 });
