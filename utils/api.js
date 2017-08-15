@@ -10,7 +10,7 @@ const wxRequest = (params, url) => {
       'Content-Type': 'application/json',
     },
     success(res) {
-      if (params.success) {
+      if (res.data.code == 0) {
         params.success(res);
       }
     },
@@ -27,7 +27,7 @@ const wxRequest = (params, url) => {
   });
 };
 
-const getHotTripList = (params) => { 
+const getHotTripList = (params) => {
   wxRequest(params, `${apiURL}/v1/trips/index`);
 };
 const getTripInfoByID = (params) => {
@@ -52,10 +52,10 @@ const getUserInfoByID = (params) => {
 };
 const getWaypointInfoByID = (params) => {
   wxRequest(params, `${apiURL}/v1/waypoint/detail/${params.query.waypointId}`);
-}; 
+};
 
-const addNewUser = (params)=>{ 
-  wxRequest(params.data,`${apiURL}/v1/users/pauli?m=info`);
+const addNewUser = (params) => {
+  wxRequest(params, `${apiURL}/v1/users/pauli?m=info`);
 }
 
 module.exports = {
@@ -66,6 +66,6 @@ module.exports = {
   getTripInfoByID,
   getPlaceTripByID,
   getUserInfoByID,
-  getWaypointInfoByID, 
+  getWaypointInfoByID,
   addNewUser,
 };

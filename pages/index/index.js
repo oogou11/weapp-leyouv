@@ -15,16 +15,19 @@ Page({
   onLoad() {
     wx.getUserInfo({
       success: function (res) {
-        console.log(res)
         wx.login({
           success: function (lg_res) {
-            let param = { method: "POST", "data": { "code": lg_res.code, "encryptedData": res.encryptedData, "iv": res.iv } }
+            let param = {
+              success: (res) => {
+                console.log(res)
+                wx.setStorage({
+                  key: "session_id",
+                  data: res.data.result
+                })
+              }, method: "POST", "data": { "code": lg_res.code, "encryptedData": res.encryptedData, "iv": res.iv, "userInfo": res.userInfo }
+            }
             if (lg_res.code) {
-              api.addNewUser({
-                data: param,
-                success: () => {
-                }
-              })
+              api.addNewUser(param)
             }
           }
         })
