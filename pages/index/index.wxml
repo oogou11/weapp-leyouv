@@ -3,8 +3,5 @@
 <scroll-view class="list" style="height: {{ windowHeight }}px; width: {{ windowWidth }}px;" scroll-y="true"  bindscrolltolower="loadMore" lower-threshold="800">
   <block wx:for="{{ trips }}" wx:for-item="trip" wx:key="trip.id">
     <template is="m-trip"  data="{{trip: trip, mode: 1}}" />
-  </block>
-  <view class="loading">
-    正在加载...
-  </view>
+  </block> 
 </scroll-view>

@@ -54,8 +54,36 @@ const getWaypointInfoByID = (params) => {
   wxRequest(params, `${apiURL}/v1/waypoint/detail/${params.query.waypointId}`);
 };
 
-const addNewUser = (params) => {
-  wxRequest(params, `${apiURL}/v1/users/pauli?m=info`);
+const addNewUser = () => {
+  let params = {}
+  wx.getUserInfo({
+    success: function (res) {
+      wx.login({
+        success: function (lg_res) {
+          if (lg_res.code) {
+            params = {
+              success: (res) => {
+                wx.setStorage({
+                  key: "session_id",
+                  data: res.data.result
+                })
+              },
+              method: "POST",
+              data: { "code": lg_res.code, "encryptedData": res.encryptedData, "iv": res.iv, userInfo: res.userInfo }
+            }
+            wxRequest(params, `${apiURL}/v1/users/pauli?m=info`);
+          }
+        }
+      })
+    }
+  })
+}
+const addNewLivePerson = (params) => {
+  wxRequest(params, `${apiURL}/v1/users/certify/${params.query.waypointid}/${params.query.sessionid}`)
+}
+const add_user_comment = (params) => {
+  console.log(params.method,params.data)
+  wxRequest(params,`${apiURL}/v1/users/addcommnet?mdinfo=vx_cen_zn`)
 }
 
 module.exports = {
@@ -68,4 +96,6 @@ module.exports = {
   getUserInfoByID,
   getWaypointInfoByID,
   addNewUser,
+  addNewLivePerson,
+  add_user_comment
 };

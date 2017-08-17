@@ -5,11 +5,15 @@
     </view>
     <view wx:if="{{ waypoint.text }}" class="text">{{ waypoint.text }}</view>
     <view class="wp-stats">
-      <view class="wp-time"><image class="icon-time" src="../../images/time.png"></image>{{ waypoint.local_time }}</view>
+      <view class="wp-time">
+        <image class="icon-time" src="../../images/time.png"></image>{{ waypoint.local_time }}</view>
     </view>
   </block>
   <view class="recommender">
-    <view bindtap="add_replies" class="title">{{ replies.recommender_count }} 人喜欢</view>
+    <view class="title">{{ replies.recommender_count }}
+      <image bindtap="add_replies" src="../../images/like.png" data-waypointid="{{waypoint.id}}" style="width:19px; height:19px;background-color: #eeeeee;"></image>
+
+    </view>
     <view class="recommender_list">
       <image wx:for="{{ replies.recommenders }}" wx:for-item="recommender" wx:key="recommender.user.id" src="{{ recommender.user.avatar_l }}" data-id="{{ recommender.user.id }}" class="avatar" bindtap="gotoUser"></image>
     </view>
@@ -23,6 +27,16 @@
           <view><text class="username">{{ comment.user.name }}: </text><text class="comment_text">{{ comment.comment }}</text></view>
           <view class="time">{{ comment.date_added }}</view>
         </view>
+      </view>
+      <view wx:if="{{!visiable}}" class="classname">
+        <button bindtap="setComment">评论</button>
+      </view>
+      <view wx:if="{{visiable}}" class="section">
+        <form bindsubmit="submitComment">
+          <textarea placeholder="输入评论" name="textarea" focus="{{focus}}" />
+          <button form-type="submit"> 发表 </button>
+          <button bindtap="cancleComment"> 取消 </button>
+        </form>
       </view>
     </view>
   </view>

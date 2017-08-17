@@ -16,16 +16,14 @@ Page({
   },
   onLoad(options) {
     const self = this;
-    const id = options.id;    
+    const id = options.id;
     self.setData({
       options,
       windowWidth: app.systemInfo.windowWidth,
-    });
-    wx.showToast({
-      title: '正在加载',
-      icon: 'loading',
-      duration: 10000,
-    });
+    }); 
+    wx.showLoading({
+      title: '加载中...',
+    })
     api.getTripInfoByID({
       query: {
         tripId: id,
@@ -35,9 +33,11 @@ Page({
         self.setData({
           trip: result.trip,
           days: result.days
-        }); 
-        wx.hideToast();
+        })
       },
+      complete: () => {
+        wx.hideLoading()
+      }
     }
     );
   },
