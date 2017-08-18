@@ -81,9 +81,12 @@ const addNewUser = () => {
 const addNewLivePerson = (params) => {
   wxRequest(params, `${apiURL}/v1/users/certify/${params.query.waypointid}/${params.query.sessionid}`)
 }
-const add_user_comment = (params) => {
-  console.log(params.method,params.data)
+const add_user_comment = (params) => { 
   wxRequest(params,`${apiURL}/v1/users/addcommnet?mdinfo=vx_cen_zn`)
+}
+
+const getScheduleList=(params)=>{
+  wxRequest(params,`${apiURL}/v1/schedule/list?mx_info=vx_cen_zn`)
 }
 
 module.exports = {
@@ -97,5 +100,6 @@ module.exports = {
   getWaypointInfoByID,
   addNewUser,
   addNewLivePerson,
-  add_user_comment
+  add_user_comment,
+  getScheduleList,
 };

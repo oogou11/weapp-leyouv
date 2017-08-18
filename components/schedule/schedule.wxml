@@ -1,0 +1,19 @@
+<template name="m-schedule">
+  <view class="m-schedule" bindtap="viewSchedule" data-id="{{ schedule.id }}" data-name="{{ schedule.name }}" >              
+    <image class="cover" src="{{ schedule.cover_image_default }}" mode="aspectFill"></image>
+    <view class="info">
+      <text class="h2">{{ schedule.name }}</text>
+      <view class="detail">
+        <view>
+        <text>{ schedule.date_start }}</text>
+        <text>{{ schedule.day_count }}天</text>
+        <text>行程状态 {{ schedule.status }}</text>
+        </view>
+      </view>
+      <view class="user">
+        <image class="avatar" src="{{ schedule.user.avatar_l }}"></image>
+        <view class="name">领队 {{ schedule.user.name }}</view>
+      </view>
+    </view>
+  </view> 
+</template>

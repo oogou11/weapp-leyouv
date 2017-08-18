@@ -1,3 +1,6 @@
-<view class="m-tourism">
-   <image class="cover" src="http://test-leyouv.oss-cn-beijing.aliyuncs.com/test/timg.gif" mode="aspectFill"></image>
-</view> 
+<import src="../../components/schedule/schedule.wxml" />
+<scroll-view class="list" style="height: {{ windowHeight }}px; width: {{ windowWidth }}px;" scroll-y="true"  bindscrolltolower="loadMore" lower-threshold="800">
+  <block wx:for="{{ schedules }}" wx:for-item="schedule" wx:key="schedule.id">
+    <template is="m-schedule"  data="{{schedule: schedule}}" />
+  </block> 
+</scroll-view>
